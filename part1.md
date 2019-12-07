@@ -1,4 +1,7 @@
-# Part 1: EC2 Instance
+
+![part 1](images/intro.png)
+
+# A Simple Introduction to AWS CloudFormation Part 1: EC2 Instance
 
 If are using AWS and want to automate creating resources you should look into AWS CloudFormation.
 
@@ -17,4 +20,3 @@ The easiest way to describe what CloudFormation is that it is a tool from AWS th
 CloudFormation makes sure that dependent resources in your template are all created in the proper order. For example, let’s say we want to create a DNS Route53 record and a EC2 instance having the DNS record point to the EC2 instance. CloudFormation will take care to provision the EC2 instance first, wait for that to be ready, and then create the DNS record afterwards. AWS CloudFormation “orchestrates” the provisioning of the desired resources.
 
 So instead of having to write script with a bunch of AWS API calls, wait loops, and retry logic, you just tell describe what you want and tell CloudFormation to do it for you. Beautiful.
-
