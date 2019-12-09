@@ -143,3 +143,8 @@ $ uptime
 
 You have successfully launched an EC2 instance with CloudFormation and ssh into it!
 
+# Cleanup
+
+Let’s destroy the resources so you do not get charged more money than you have to. This is super simple.
+
+```aws cloudformation delete-stack --stack-name single-instance```
