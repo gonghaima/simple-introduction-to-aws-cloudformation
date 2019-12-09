@@ -109,3 +109,37 @@ Parameters:
 ```
 
 You can see that the default parameter for the EC2 Instance type to launch is ```t2.small```. You can override this value when you launch the instance if you would like. For parameters with default values, you do not need to provide the parameter. For parameters without default values, you will need to provide the parameter. In this specific template, the only required parameter is the ```KeyName```. The ```KeyName``` is the ssh key use to access the instance. You can create an ssh key with the EC2 Console menu under “Key Pairs”. For the purpose of this tutorial, I’ve created a tutorial keypair and will use that.
+
+# Launching the Stack
+
+After all that explanation, let’s finally launch the stack!
+
+```shell
+$ aws cloudformation create-stack --template-body file://templates/single_instance.yml --stack-name single-instance --parameters ParameterKey=KeyName,ParameterValue=tutorial ParameterKey=InstanceType,ParameterValue=t2.micro
+```
+
+Upon successfully launching the CloudFormation stack you will see output similar to this:
+
+```json
+{
+    "StackId": "arn:aws:cloudformation:us-west-2:1606191131234:stack/single-instance/3401e900-3d83-11e7-bb7e-503f2a2cee4a"
+}
+```
+
+To check on the status of the newly launch stack, you can use the [AWS CloudFormation console](https://us-west-2.console.aws.amazon.com/cloudformation/home) and click in the Events Tab after selecting the stack name. Here’s what it looks like.
+
+![cloudformation console](images/cloudformation-console.png)
+
+You can see that the EC2 Instance and the EC2 Security group were created in about a minute. Next let’s find the running instance so we can grab the Public DNS to log in. We can find that on the EC2 Console.
+
+![an instance](images/an-instance.png)
+
+Use the DNS info to now ssh into the instance.
+
+```shell
+$ ssh -i ~/.ssh/tutorial.pem ec2-user@ec2–54–71–197–155.us-west-2.compute.amazonaws.com
+$ uptime
+```
+
+You have successfully launched an EC2 instance with CloudFormation and ssh into it!
+
