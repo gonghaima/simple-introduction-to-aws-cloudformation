@@ -159,4 +159,4 @@ There are other tools in this provisioning orchestration space like [Terraform](
 
 In the next post, I will talk about how to add a Route53 record resource to the template: [A Simple Introduction to AWS CloudFormation Part 2: EC2 Instance and Route53](https://medium.com/boltops/a-simple-introduction-to-aws-cloudformation-part-2-d6d95ed30328).
 
-
+# Prebuilt CloudFormation Templates
