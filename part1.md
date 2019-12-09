@@ -148,3 +148,15 @@ You have successfully launched an EC2 instance with CloudFormation and ssh into 
 Let’s destroy the resources so you do not get charged more money than you have to. This is super simple.
 
 ```aws cloudformation delete-stack --stack-name single-instance```
+
+# Summary
+
+There is so much more you can do with CloudFormation than what was done in this post. This tutorial was designed to be basic intentionally since it is a simple introduction to CloudFormation.
+
+CloudFormation is known for it’s steep learning curve. Hopefully you can see from this post that the steep learning curve is not actually CloudFormation itself but actually learning all the different resources themselves that you are able to spin up with CloudFormation. It’s like learning a programming language. The programming language itself is not that difficult to learn, it’s the standard libraries, the external libraries, the ecosystem that takes a while to learn and get fluent in.
+
+There are other tools in this provisioning orchestration space like [Terraform](https://www.terraform.io/) also. I’ve come to really enjoy using CloudFormation because of it’s stateless nature, automatic rollbacks and cleanup, events logging and helpful AWS support. Hope this post was helpful for everyone!
+
+In the next post, I will talk about how to add a Route53 record resource to the template: [A Simple Introduction to AWS CloudFormation Part 2: EC2 Instance and Route53](https://medium.com/boltops/a-simple-introduction-to-aws-cloudformation-part-2-d6d95ed30328).
+
+
