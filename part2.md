@@ -88,3 +88,9 @@ aws cloudformation create-stack --template-body file://templates/instance-and-ro
 After launching the stack you can check on it’s status via the CloudFormation console. It looks similar to this:
 
 ![cloudformation stack](images/cloudformationStack.png)
+
+# Clean Up
+
+Delete the stack at the end now:
+
+```aws cloudformation delete-stack --stack-name route53```
