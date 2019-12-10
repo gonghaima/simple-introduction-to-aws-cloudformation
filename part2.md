@@ -45,3 +45,46 @@ This stack requires that the hosted zone in Route53 has already been created. Fo
 ![route53](images/route53.png)
 
 The route that the CloudFormation stack will create is: testdomain.example.local.
+
+# Creating the Stack
+
+We now have everything required to launch the stack!
+
+Specifying the parameters all in the CLI starts to get pretty ugly:
+
+```shell
+aws cloudformation create-stack --template-body file://templates/instance-and-route53.yml --stack-name route53 --parameters ParameterKey=KeyName,ParameterValue=tutorial ParameterKey=InstanceType,ParameterValue=t2.micro ParameterKey=HostedZoneName,ParameterValue=example.local. ParameterKey=Subdomain,ParameterValue=testsubdomain
+```
+
+So I’m using a CloudFormation parameters file instead that looks like this:
+
+```json
+[
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "tutorial"
+  },
+  {
+    "ParameterKey": "InstanceType",
+    "ParameterValue": "t2.micro"
+  },
+  {
+    "ParameterKey": "HostedZoneName",
+    "ParameterValue": "example.local."
+  },
+  {
+    "ParameterKey": "Subdomain",
+    "ParameterValue": "testsubdomain"
+  }
+]
+```
+
+The final CloudFormation create-stack command is:
+
+```shell
+aws cloudformation create-stack --template-body file://templates/instance-and-route53.yml --stack-name route53 --parameters file://parameters/instance-and-route53.json
+```
+
+After launching the stack you can check on it’s status via the CloudFormation console. It looks similar to this:
+
+![cloudformation stack](images/cloudformationStack.png)
