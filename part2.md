@@ -94,3 +94,11 @@ After launching the stack you can check on it’s status via the CloudFormation 
 Delete the stack at the end now:
 
 ```aws cloudformation delete-stack --stack-name route53```
+
+# Summary
+
+You can see the EC2 instance and Route53 record all got created in about 3 minutes. Also noticed that you did not have to tell CloudFormation anything about the ordering of how the resources needed to be created. CloudFormation was smart enough to figure that it needed to first create the EC2 instance and then the Route53 record. It takes orchestration, something that is pretty complicated and makes it very simple.
+
+Hopefully, you are starting to see that CloudFormation is not that complicated but gives you a lot of power. We have barely touched the surface of CloudFormation in these introductory tutorials. You can create AutoScaling groups, ELBs, VPCs, Subnets and many more resources with CloudFormation. To browse through all the possibilities you can look at the [AWS Resource Type Reference](https://redirect.viglink.com/?format=go&jsonp=vglnk_157610277170511&key=0d3176c012db018d69225ad1c36210fa&libId=k41utsjc0102jk33000DA1740ouu87x9bb&subId=90a093a441eeed5ed87cea10819eb718&cuid=90a093a441eeed5ed87cea10819eb718&loc=https%3A%2F%2Fblog.boltops.com%2F2017%2F03%2F20%2Fa-simple-introduction-to-aws-cloudformation-part-2-ec2-instance-and-route53&v=1&out=http%3A%2F%2Fdocs.aws.amazon.com%2FAWSCloudFormation%2Flatest%2FUserGuide%2Faws-template-resource-type-ref.html&title=A%20Simple%20Introduction%20to%20AWS%20CloudFormation%20Part%202%3A%20EC2%20Instance%20and%20Route53%20-%20BoltOps%20Blog&txt=AWS%20Resource%20Type%20Reference) documentation for a very long list all the resources CloudFormation supports.
+
+In the next post, I’ll show you how to update existing CloudFormation stacks: [A Simple Introduction to AWS CloudFormation Part 3: Updating a Stack](https://blog.boltops.com/2017/03/24/a-simple-introduction-to-aws-cloudformation-part-3-updating-a-stack).
