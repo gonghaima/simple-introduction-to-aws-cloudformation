@@ -63,3 +63,12 @@ You can check on the status of the stack with the AWS CloudFormation console on 
 
 Notice that CloudFormation smartly added the route53 record and associated it with the DNS public hostname of the instance.
 
+Now let’s go ahead and remove the route53 record by updating to the old stack.
+
+```aws cloudformation update-stack --stack-name example --template-body file://templates/single-instance.yml --parameters file://parameters/single-instance.json```
+
+Here’s the CloudFormation console Events tab again:
+
+![stack updating to old one](images/stackUpdatingStatus1.png)
+
+Notice how CloudFormation disassociated the route53 DNS entry and removed the record.
