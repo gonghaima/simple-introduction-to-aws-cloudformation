@@ -50,3 +50,16 @@ You should see a diff with the added Parameters and DnsRecord Resource like so:
 >       ResourceRecords:
 >       - !GetAtt EC2Instance.PublicIp
 ```
+
+# Updating the Stack
+
+Now let’s run the command to update the stack and add the route53 record:
+
+```$ aws cloudformation update-stack --stack-name example --template-body file://templates/instance-and-route53.yml --parameters file://parameters/instance-and-route53.json```
+
+You can check on the status of the stack with the AWS CloudFormation console on the Events tab again:
+
+![stack updating status](images/stackUpdatingStatus.png)
+
+Notice that CloudFormation smartly added the route53 record and associated it with the DNS public hostname of the instance.
+
