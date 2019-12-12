@@ -72,3 +72,9 @@ Here’s the CloudFormation console Events tab again:
 ![stack updating to old one](images/stackUpdatingStatus1.png)
 
 Notice how CloudFormation disassociated the route53 DNS entry and removed the record.
+
+# Summary
+
+You have now successfully updated stacks with CloudFormation. This is a common task you will need to learn to develop with CloudFormation. Remember to delete the stack and clean up after yourself. I hope this helps!
+
+In the next post, I’ll show you how to a very cool CloudFormation feature call Change Sets that give you the ability to preview stack updates before making them: [A Simple Introduction to AWS CloudFormation Part 4: Change Sets = Dry Run Mode](https://blog.boltops.com/2017/04/07/a-simple-introduction-to-aws-cloudformation-part-4-change-sets-dry-run-mode).
