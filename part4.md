@@ -83,3 +83,8 @@ You can view the results in the CloudFormation console.
 
 ![cloudformation console](images/cloudformation-console.png)
 
+# Summary
+
+Change Sets is such a powerful addition to CloudFormation that I cannot believe it took me so long to realize that it is the dry-run mode holy grail feature that I’ve been waiting for.
+
+After using Change Sets, I’ve realized that it is even better than a dry run. When working alone a dry-run more where you can preview the changes by yourself as a lone developer having the dry-run as part of one command flow makes a lot of sense. However, a huge advantage of change sets is that it gives you the ability to show to your co-workers what changes you are trying to apply to the stack. They can quickly review it in the CloudFormation console and give you the thumbs up or execute it. The fact that it’s viewable in a web browser as well as from the CLI makes it extremely convenient for sharing.
