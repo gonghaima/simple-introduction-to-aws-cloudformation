@@ -10,3 +10,52 @@ When I first heard of Change Sets, the name made me think of git changesets. I a
 
 NOTE: All the source code for this post is available on Github: [tongueroo/cloudformation-examples](https://github.com/tongueroo/cloudformation-examples).
 
+# Previewing Your Changes: dry-run in action
+
+Building upon Part 1, Part 2 and Part 3 blog posts we will use this dry-run ability to preview what will change when we update a stack and add a route53 record to it. We will also preview the deletion of the route53 record.
+
+First, let’s create an example stack to work with:
+
+```$ aws cloudformation create-stack --stack-name example --template-body file://templates/single-instance.yml --parameters file://parameters/single-instance.json```
+
+To create the change set:
+
+```$ aws cloudformation create-change-set --stack-name example --template-body file://templates/instance-and-route53.yml --parameters file://parameters/instance-and-route53.json --change-set-name changeset-1```
+
+You should see output like this:
+
+```json
+{
+    "StackId": "arn:aws:cloudformation:us-west-2:160619113767:stack/example/7dddd1d0-3ea3-11e7-a894-503ac9841afd",
+    "Id": "arn:aws:cloudformation:us-west-2:160619113767:changeSet/changeset-1/4acb3939-5677-4973-a6cb-f5aed16689de"
+}
+```
+
+Now to see a preview of the changes you use describe-change-set
+
+```aws cloudformation describe-change-set --stack-name example --change-set-name changeset-1 | jq '.Changes[]'```
+
+You should see this output:
+
+```json
+{
+  "ResourceChange": {
+    "Action": "Add",
+    "ResourceType": "AWS::Route53::RecordSet",
+    "Scope": [],
+    "Details": [],
+    "LogicalResourceId": "DnsRecord"
+  },
+  "Type": "Resource"
+}
+```
+
+You can see that the Changes attribute out of the output confirm that an AWS::Route53::RecordSet DNS record will be added.
+
+You can also view the Change Set in the CloudFormation Console, which is even easier on the eyes. Click on the stack’s “Change Sets” tab and click on the Change Set you just created. Here you can preview the details of the changes.
+
+![change set](images/changeSet.png)
+
+On the same Change Set Detail page, you can also choose to execute the Change Set right from where you preview it!
+
+![execute change set](images/excuteChangeSet.png)
