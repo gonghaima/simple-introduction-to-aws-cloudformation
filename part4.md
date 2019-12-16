@@ -71,3 +71,15 @@ Or you can execute the Change Set from the CloudFormation console, which is supe
 ```aws cloudformation execute-change-set --stack-name example --change-set-name changeset-1```
 
 Both ways accomplish the same end result. You get one nice additional benefit if you use ```execute-change-set``` method; it shows that the Change Set was applied and thereby provides a clear audit trail.
+
+# Preview Again: Deleting the Route53 Record
+
+Let’s apply another change set again, this time to remove the route53 record.
+
+```$ aws cloudformation create-change-set --stack-name example --template-body file://templates/single-instance.yml --parameters file://parameters/single-instance.json --change-set-name changeset-2
+$ aws cloudformation execute-change-set --stack-name example --change-set-name changeset-2```
+
+You can view the results in the CloudFormation console.
+
+![cloudformation console](images/cloudformation-console.png)
+
