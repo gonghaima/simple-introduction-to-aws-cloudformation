@@ -59,3 +59,15 @@ You can also view the Change Set in the CloudFormation Console, which is even ea
 On the same Change Set Detail page, you can also choose to execute the Change Set right from where you preview it!
 
 ![execute change set](images/excuteChangeSet.png)
+
+# Updating the Stack
+
+This gives you 2 ways to update a stack. You can go back and run the update-stack command as we did in the [Part 3](https://medium.com/boltops/a-simple-introduction-to-cloudformation-part-3-updating-a-stack-6fe2bb3931a9) post. Here is the command again.
+
+```aws cloudformation update-stack --stack-name example --template-body file://templates/instance-and-route53.yml --parameters file://parameters/instance-and-route53.json```
+
+Or you can execute the Change Set from the CloudFormation console, which is super simple. Here’s the equivalent CLI command:
+
+```aws cloudformation execute-change-set --stack-name example --change-set-name changeset-1```
+
+Both ways accomplish the same end result. You get one nice additional benefit if you use ```execute-change-set``` method; it shows that the Change Set was applied and thereby provides a clear audit trail.
